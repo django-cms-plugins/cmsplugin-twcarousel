@@ -1,0 +1,30 @@
+{% load cms_tags sekizai_tags staticfiles %}
+
+{% addtoblock "js" %}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+{% endaddtoblock %}
+
+{% addtoblock "css" %}
+    <link href="{% static 'css/bootstrap.css' %}" media="screen" rel="stylesheet" type="text/css" />
+{% endaddtoblock %}
+
+<div id="showcase" class="carousel slide" data-interval="{{ instance.interval }}">
+    <ol class="carousel-indicators">
+        {% for slide in instance.carousel.slide_set.all %}
+        <li data-target="#showcase" data-slide-to="{{ forloop.counter0}}" {% if forloop.first %}class="active"{% endif %}></li>
+        {% endfor %}
+    </ol>
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+        {% for slide in instance.carousel.slide_set.all %}
+        <div class="item {% if forloop.first %}active{% endif %}">
+            <img src="{{ slide.image.url }}" alt="">
+            <div class="carousel-caption">
+                <h2>{{ slide.title }}</h2>
+                {{ slide.text|safe }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
