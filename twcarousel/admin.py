@@ -7,10 +7,8 @@ class SlideInline(admin.StackedInline):
 
 
 class CarouselAdmin(admin.ModelAdmin):
-    model = Carousel
-
     inlines = [
-        SlideInline,
+        SlideInline
     ]
 
 admin.site.register(Carousel, CarouselAdmin)
