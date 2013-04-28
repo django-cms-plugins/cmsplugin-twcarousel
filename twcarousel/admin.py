@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apps.twcarousel.models import Slide, Carousel
+from .models import Slide, Carousel
 
 
 class SlideInline(admin.StackedInline):
