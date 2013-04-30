@@ -1,14 +1,5 @@
 {% load cms_tags sekizai_tags staticfiles %}
 
-{% addtoblock "js" %}
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-{% endaddtoblock %}
-
-{% addtoblock "css" %}
-    <link href="{% static 'css/bootstrap.css' %}" media="screen" rel="stylesheet" type="text/css" />
-{% endaddtoblock %}
-
 <div id="showcase" class="carousel slide" data-interval="{{ instance.interval }}">
     <ol class="carousel-indicators">
         {% for slide in instance.carousel.slide_set.all %}
@@ -28,3 +19,18 @@
         {% endfor %}
     </div>
 </div>
+
+
+
+
+{% addtoblock "js" strip %}
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js" strip %}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+{% endaddtoblock %}
+
+{% addtoblock "css" strip %}
+    <link href="{% static 'css/bootstrap.css' %}" media="screen" rel="stylesheet" type="text/css" />
+{% endaddtoblock %}
